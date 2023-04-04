@@ -18,7 +18,7 @@ export default function IndexHero() {
       <Container
         maxW='container.md'
         px={0}
-        py={['14', '14', '32']}>
+        pt={['14', '14', '32']} pb={['10', '10', '16']}>
         <Flex
           gap='10'
           direction={['column-reverse', 'column-reverse', 'row']}>

@@ -1,9 +1,6 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import { NextSeo } from 'next-seo';
 import IndexHero from '@/components/pages/index/IndexHero';
+import IndexExperience from '@/components/pages/index/IndexExperience';
 
 export default function Home() {
   return (
@@ -13,6 +10,7 @@ export default function Home() {
       />
       <main>
         <IndexHero />
+        <IndexExperience />
       </main>
     </>
   );
