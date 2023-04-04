@@ -1,9 +1,12 @@
 import '@/styles/globals.css';
+import '@fontsource/figtree';
 import type { AppProps } from 'next/app';
-import { MantineProvider } from '@mantine/core';
+import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import defaultSEOConfig from '../../next-seo.config';
+import Layout from '../components/layout/Layout';
+import theme from '../themes/theme.js';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -14,17 +17,12 @@ export default function App({ Component, pageProps }: AppProps) {
           content='minimum-scale=1, initial-scale=1, width=device-width'
         />
       </Head>
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          colorScheme: 'dark',
-        }}>
-        <DefaultSeo
-          {...defaultSEOConfig}
-        />
-        <Component {...pageProps} />
-      </MantineProvider>
+      <ChakraProvider theme={theme}>
+        <DefaultSeo {...defaultSEOConfig} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
     </>
   );
 }
