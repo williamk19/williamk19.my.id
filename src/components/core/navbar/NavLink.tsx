@@ -4,24 +4,24 @@ import NextLink from 'next/link';
 export default function NavLink() {
   return (
     <>
-      <Hide below='sm'>
+      <Hide below='md'>
         <Link
           as={NextLink}
-          fontSize='lg'
+          fontSize='md'
           fontWeight='semibold'
           href='/'>
           Blogs
         </Link>
         <Link
           as={NextLink}
-          fontSize='lg'
+          fontSize='md'
           fontWeight='semibold'
           href='/'>
           Projects
         </Link>
         <Link
           as={NextLink}
-          fontSize='lg'
+          fontSize='md'
           fontWeight='semibold'
           href='/'>
           Info

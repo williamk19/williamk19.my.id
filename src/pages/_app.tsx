@@ -7,6 +7,7 @@ import { DefaultSeo } from 'next-seo';
 import defaultSEOConfig from '../../next-seo.config';
 import Layout from '../components/layout/Layout';
 import theme from '../themes/theme.js';
+import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ChakraProvider theme={theme}>
         <DefaultSeo {...defaultSEOConfig} />
         <Layout>
+          <NextNProgress height={4} options={{ showSpinner: false }} />
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>

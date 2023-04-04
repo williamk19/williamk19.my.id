@@ -18,7 +18,7 @@ import {
 export default function NavMenu() {
   return (
     <>
-      <Show below='sm'>
+      <Show below='md'>
         <Menu>
           <MenuButton
             as={IconButton}

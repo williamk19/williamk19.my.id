@@ -11,8 +11,8 @@ export default function Layout({ children }: Props) {
   return (
     <Box transition='0.5s ease-out'>
       <Container
-        maxW='container.lg'
-        // border='1px solid #000'
+        maxW='container.md'
+        px={[6, 6, 0]}
       >
         <Navbar />
         <main>{children}</main>
