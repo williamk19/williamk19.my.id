@@ -4,8 +4,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Show,
-  useBreakpointValue,
+  Show
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,

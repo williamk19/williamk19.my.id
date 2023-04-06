@@ -1,13 +1,13 @@
-import { Box, Flex, Text, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
 
 export default function IndexExperienceCard(props: any) {
   const { colorMode } = useColorMode();
-  console.log(colorMode);
 
   return (
     <>
       <Box
-        border={`1px solid ${colorMode === 'light' ? 'black' : 'white'}`}
+        border={`1px solid`}
+        borderColor={`${colorMode === 'light' ? 'black' : 'cyan.400'}`}
         boxShadow='md'
         borderRadius={'lg'}
         w='100%'
@@ -37,8 +37,9 @@ export default function IndexExperienceCard(props: any) {
             gap={['1', '0']}
             textAlign={['left', 'right']}
             fontSize='sm'>
-            <Text>{props.rangeTime},</Text>
-            <Text>{props.location}</Text>
+            <Text>{props.rangeTime}</Text>
+            <Show below='sm'>|</Show>
+            <Text>{props?.location}</Text>
           </Flex>
         </Flex>
         {props.description?.map((d: string, idx: number) => (

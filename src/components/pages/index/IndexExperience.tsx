@@ -1,4 +1,4 @@
-import { Container, Flex, Heading } from '@chakra-ui/react';
+import { Container, Flex, Heading, Text } from '@chakra-ui/react';
 import IndexExperienceCard from './IndexExperienceCard';
 
 export default function IndexExperience() {
@@ -28,7 +28,7 @@ export default function IndexExperience() {
 
   const ORG_EXPERIENCE: Array<Object> = [
     {
-      orgName: 'CODER IT Telkom Surabaya',
+      companyName: 'CODER IT Telkom Surabaya',
       jobDesc: 'Member | Division Coordinator',
       description: [
         `Coordinator of Competitive Programming Division.`,
@@ -44,9 +44,36 @@ export default function IndexExperience() {
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'8'}>Experience</Heading>
-        <Flex direction='column' px={[0, 0, 2]} gap='5'>
+        <Heading mb={'6'}>Experience</Heading>
+        <Text
+          fontSize='xl'
+          fontWeight='semibold'
+          mb={'3'}>
+          Working Experience
+        </Text>
+        <Flex
+          direction='column'
+          px={[0, 0, 2]}
+          gap='5'>
           {WORK_EXPERIENCE.map((w, idx) => (
+            <IndexExperienceCard
+              key={idx}
+              {...w}
+            />
+          ))}
+        </Flex>
+        <Text
+          fontSize='xl'
+          fontWeight='semibold'
+          mt={'6'}
+          mb={'3'}>
+          Organizational
+        </Text>
+        <Flex
+          direction='column'
+          px={[0, 0, 2]}
+          gap='5'>
+          {ORG_EXPERIENCE.map((w, idx) => (
             <IndexExperienceCard
               key={idx}
               {...w}
