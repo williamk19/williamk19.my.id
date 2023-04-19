@@ -4,15 +4,14 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Show
+  Show,
+  Link,
 } from '@chakra-ui/react';
-import {
-  HamburgerIcon,
-  AddIcon,
-  ExternalLinkIcon,
-  RepeatIcon,
-  EditIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon } from '@chakra-ui/icons';
+import { TfiBriefcase } from 'react-icons/tfi';
+import { SlDocs } from 'react-icons/sl';
+import { BiInfoCircle } from 'react-icons/bi';
+import NextLink from 'next/link';
 
 export default function NavMenu() {
   return (
@@ -26,9 +25,21 @@ export default function NavMenu() {
             variant='outline'
           />
           <MenuList>
-            <MenuItem icon={<AddIcon />}>New Tab</MenuItem>
-            <MenuItem icon={<ExternalLinkIcon />}>New Window</MenuItem>
-            <MenuItem icon={<RepeatIcon />}>Open Closed Tab</MenuItem>
+            <Link
+              as={NextLink}
+              href='/'>
+              <MenuItem icon={<SlDocs />}>Blogs</MenuItem>
+            </Link>
+            <Link
+              as={NextLink}
+              href='/'>
+              <MenuItem icon={<TfiBriefcase />}>Projects</MenuItem>
+            </Link>
+            <Link
+              as={NextLink}
+              href='/'>
+              <MenuItem icon={<BiInfoCircle />}>Info</MenuItem>
+            </Link>
           </MenuList>
         </Menu>
       </Show>

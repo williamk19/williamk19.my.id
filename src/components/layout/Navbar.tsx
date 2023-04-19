@@ -1,34 +1,63 @@
-import { Link, Flex } from '@chakra-ui/react';
+import { Link, Flex, Container, Box, useColorMode } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import NavMenu from '../core/navbar/NavMenu';
 import NavThemeToggle from '../core/navbar/NavThemeToggle';
 import NavLink from '../core/navbar/NavLink';
 
 export default function Navbar() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <>
-      <Flex
-        h={'16'}
-        align='flex-end'
-        justify='space-between'>
+      <Box
+        m={'auto'}
+        position={'sticky'}
+        mt={[0, 0, '8']}
+        top={['0', '0', '2']}
+        zIndex={'20'}
+        px={['0', '0', '4']}
+        maxW={`4xl`}>
         <Flex
-          h='20'
-          align='flex-end'
-          gap='10'>
-          <Link
-            as={NextLink}
-            fontSize='2xl'
-            href='/'
-            fontWeight='bold'>
-            williamk19
-          </Link>
-          <NavLink />
+          h={'16'}
+          align='center'
+          justify='space-between'
+          px={['4', '4', '10']}
+          borderRadius={[0, 0, '8px']}
+          transition='all 0.2s ease-out'
+          sx={
+            colorMode === 'dark'
+              ? {
+                  background: 'rgba(46, 61, 71, 0.808)',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(8.4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }
+              : {
+                  background: 'rgba(218, 218, 218, 0.808)',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+                  backdropFilter: 'blur(8.4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }
+          }>
+          <Flex
+            h='20'
+            align='center'
+            gap='10'>
+            <Link
+              as={NextLink}
+              fontSize='2xl'
+              href='/'
+              fontWeight='bold'>
+              williamk19
+            </Link>
+            <NavLink />
+          </Flex>
+          <Flex gap='2'>
+            <NavThemeToggle />
+            <NavMenu />
+          </Flex>
         </Flex>
-        <Flex gap='2'>
-          <NavThemeToggle />
-          <NavMenu />
-        </Flex>
-      </Flex>
+      </Box>
     </>
   );
 }

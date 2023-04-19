@@ -11,10 +11,10 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Box transition='0.5s ease-out'>
+        <Navbar />
         <Container
           maxW='container.md'
           px={[6, 6, 0]}>
-          <Navbar />
           <main>{children}</main>
           <Footer />
         </Container>

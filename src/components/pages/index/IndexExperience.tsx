@@ -1,7 +1,8 @@
 import { Container, Flex, Heading, Text } from '@chakra-ui/react';
 import IndexExperienceCard from './IndexExperienceCard';
 
-export default function IndexExperience() {
+export default function IndexExperience({ experience }) {
+  console.log(experience);
   const WORK_EXPERIENCE: Array<any> = [
     {
       companyName: 'IT Telkom Surabaya',
