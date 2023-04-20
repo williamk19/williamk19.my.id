@@ -3,6 +3,15 @@ import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
 export default function IndexExperienceCard(props: any) {
   const { colorMode } = useColorMode();
 
+  const dateStart = new Date(props.date_start);
+  const dateEnd = new Date(props.date_end);
+  const monthYearStart = `${dateStart.toLocaleString('default', {
+    month: 'short',
+  })}, ${dateStart.getFullYear()}`;
+  const monthYearEnd = `${dateEnd.toLocaleString('default', {
+    month: 'short',
+  })}, ${dateEnd.getFullYear()}`;
+
   return (
     <>
       <Box
@@ -27,26 +36,27 @@ export default function IndexExperienceCard(props: any) {
             <Text
               fontSize='xl'
               fontWeight='bold'>
-              {props.companyName}
+              {props.workplace}
             </Text>
-            <Text>{props.jobDesc}</Text>
+            <Text>{props.job_desc}</Text>
           </Box>
           <Flex
             mt={['2', '0']}
             direction={['row', 'column']}
             gap={['1', '0']}
+            fontWeight={['bold', 'bold', 'medium']}
             textAlign={['left', 'right']}
-            fontSize='sm'>
-            <Text>{props.rangeTime}</Text>
-            <Show below='sm'>|</Show>
+            fontSize={['xs', 'xs', 'sm']}>
+            <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
+            {props.location && <Show below='sm'>|</Show>}
             <Text>{props?.location}</Text>
           </Flex>
         </Flex>
-        {props.description?.map((d: string, idx: number) => (
+        {props.experience_description?.map((d: any, idx: number) => (
           <Text
             key={idx}
             fontSize='sm'>
-            {`◦ ${d}`}
+            {`◦ ${d.description_text}`}
           </Text>
         ))}
       </Box>

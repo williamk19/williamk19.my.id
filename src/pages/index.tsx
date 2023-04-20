@@ -16,11 +16,12 @@ export default function Home({ experience }: any) {
 }
 
 export async function getServerSideProps() {
-  let { data } = await supabase.from('experience').select('*');
+  let { data: experience, error } = await supabase.from('experience').select(`
+    *, experience_type (type_name), experience_description (description_text)`);
 
   return {
     props: {
-      experience: data,
+      experience,
     },
   };
 }
