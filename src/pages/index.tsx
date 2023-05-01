@@ -2,8 +2,13 @@ import { NextSeo } from 'next-seo';
 import IndexHero from '@/components/pages/index/IndexHero';
 import IndexExperience from '@/components/pages/index/IndexExperience';
 import { supabase } from '@/lib/supabaseClient';
+import { Experience } from '../types/experience.type';
 
-export default function Home({ experience }: any) {
+type HomeProps = {
+  experience: Experience;
+}
+
+export default function Home({ experience }: HomeProps) {
   return (
     <>
       <NextSeo title='Home' />
