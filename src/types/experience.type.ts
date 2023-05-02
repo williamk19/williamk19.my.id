@@ -1,22 +1,19 @@
 import { Key } from 'react';
 
-type ExperienceType = {
-  type_name: string;
-}
-
-type ExperienceDescription = {
-  description_text: string;
-}
+export type ExperienceAttr = {
+  workplace: string;
+  job_desc: string;
+  location: string | null;
+  date_start: Date;
+  date_end: Date | null;
+  type: string;
+  description: string[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+};
 
 export type Experience = {
   id: Key;
-  created_at: Date;
-  workplace: string;
-  job_desc: string;
-  location: string;
-  date_start: Date;
-  type: number;
-  date_end: Date;
-  experience_type: ExperienceType;
-  experience_description: ExperienceDescription[];
+  attributes: ExperienceAttr;
 };

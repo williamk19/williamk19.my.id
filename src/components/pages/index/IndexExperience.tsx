@@ -1,9 +1,20 @@
 import { Container, Flex, Heading, Text } from '@chakra-ui/react';
 import IndexExperienceCard from './IndexExperienceCard';
+import { Experience } from '@/types/experience.type';
+import { FC } from 'react';
 
-export default function IndexExperience({ experience }: any) {
-  const workExperience = experience.filter((exp: any) => exp.type === 1);
-  const orgExperience = experience.filter((exp: any) => exp.type === 2);
+type IndexExperienceProps = {
+  experience: Experience[];
+};
+
+const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
+  const workExperience = experience.filter(
+    (exp: any) => exp.attributes.type === 'work',
+  );
+
+  const orgExperience = experience.filter(
+    (exp: any) => exp.attributes.type === 'organization',
+  );
 
   return (
     <>
@@ -50,4 +61,6 @@ export default function IndexExperience({ experience }: any) {
       </Container>
     </>
   );
-}
+};
+
+export default IndexExperience;
