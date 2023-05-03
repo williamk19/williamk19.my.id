@@ -1,16 +1,30 @@
+import { ExperienceAttr } from '@/types/experience.type';
 import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
+import { FC, Key } from 'react';
 
-export default function IndexExperienceCard(props: any) {
+type IndexExperienceCardProps = {
+  id: Key;
+  attributes: ExperienceAttr;
+};
+
+const IndexExperienceCard: FC<IndexExperienceCardProps> = (props) => {
   const { colorMode } = useColorMode();
+  const { attributes } = props;
 
-  const dateStart = new Date(props.date_start);
-  const dateEnd = new Date(props.date_end);
+  const dateStart = new Date(attributes.date_start);
+  const dateEnd = attributes.date_end
+    ? new Date(attributes.date_end)
+    : 'Present';
+  
   const monthYearStart = `${dateStart.toLocaleString('default', {
     month: 'short',
   })}, ${dateStart.getFullYear()}`;
-  const monthYearEnd = `${dateEnd.toLocaleString('default', {
-    month: 'short',
-  })}, ${dateEnd.getFullYear()}`;
+  const monthYearEnd =
+    dateEnd === 'Present'
+      ? `Present`
+      : `${dateEnd.toLocaleString('default', {
+          month: 'short',
+        })}, ${dateEnd.getFullYear()}`;
 
   return (
     <>
@@ -36,9 +50,9 @@ export default function IndexExperienceCard(props: any) {
             <Text
               fontSize='xl'
               fontWeight='bold'>
-              {props.workplace}
+              {attributes.workplace}
             </Text>
-            <Text>{props.job_desc}</Text>
+            <Text>{attributes.job_desc}</Text>
           </Box>
           <Flex
             mt={['2', '0']}
@@ -48,18 +62,20 @@ export default function IndexExperienceCard(props: any) {
             textAlign={['left', 'right']}
             fontSize={['xs', 'xs', 'sm']}>
             <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
-            {props.location && <Show below='sm'>|</Show>}
-            <Text>{props?.location}</Text>
+            {attributes.location && <Show below='sm'>|</Show>}
+            <Text>{attributes?.location}</Text>
           </Flex>
         </Flex>
-        {props.experience_description?.map((d: any, idx: number) => (
+        {attributes.description?.map((desc: string, idx: number) => (
           <Text
             key={idx}
             fontSize='sm'>
-            {`◦ ${d.description_text}`}
+            {`◦ ${desc}`}
           </Text>
         ))}
       </Box>
     </>
   );
-}
+};
+
+export default IndexExperienceCard;

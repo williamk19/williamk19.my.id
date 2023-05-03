@@ -8,13 +8,31 @@ type IndexExperienceProps = {
 };
 
 const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
-  const workExperience = experience.filter(
-    (exp: any) => exp.attributes.type === 'work',
-  );
+  const compareDate = (a: Experience, b: Experience) => {
+    if (a.attributes.date_end && b.attributes.date_end) {
+      if (a.attributes.date_end > b.attributes.date_end) {
+        return 1;
+      } else {
+        return -1;
+      }
+    } else if (!a.attributes.date_end || !b.attributes.date_end) {
+      if (a.attributes.date_start < b.attributes.date_start) {
+        return 1;
+      } else {
+        return -1;
+      }
+    }
 
-  const orgExperience = experience.filter(
-    (exp: any) => exp.attributes.type === 'organization',
-  );
+    return 0;
+  };
+
+  const workExperience = experience
+    .filter((exp: any) => exp.attributes.type === 'work')
+    .sort(compareDate);
+
+  const orgExperience = experience
+    .filter((exp: any) => exp.attributes.type === 'organization')
+    .sort(compareDate);
 
   return (
     <>
