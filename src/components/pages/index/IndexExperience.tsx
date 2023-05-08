@@ -40,7 +40,7 @@ const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'6'}>Experience</Heading>
+        <Heading mb={'4'}>Experience</Heading>
         <Text
           fontSize='xl'
           fontWeight='semibold'
