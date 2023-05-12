@@ -4,7 +4,7 @@ import IndexExperience from '@/components/pages/index/IndexExperience';
 import { Experience } from '../types/experience.type';
 import { FC } from 'react';
 import { loadExperience } from '@/lib/loadExperience';
-import { loadProjects } from '@/lib/loadProjects';
+import { loadProjectsIndex } from '@/lib/loadProjects';
 import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
 
@@ -17,18 +17,16 @@ const Home: FC<HomeProps> = ({ experience, projects }) => {
   return (
     <>
       <NextSeo title='Home' />
-      <main>
-        <IndexHero />
-        <IndexProjects projects={projects} />
-        <IndexExperience experience={experience} />
-      </main>
+      <IndexHero />
+      <IndexProjects projects={projects} />
+      <IndexExperience experience={experience} />
     </>
   );
 };
 
 export async function getStaticProps() {
   const { data: experience } = await loadExperience();
-  const { data: projects } = await loadProjects();
+  const { data: projects } = await loadProjectsIndex();
 
   return {
     props: {

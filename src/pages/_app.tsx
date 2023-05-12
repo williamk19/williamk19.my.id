@@ -10,7 +10,6 @@ import theme from '../themes/theme.js';
 import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
 
-
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>

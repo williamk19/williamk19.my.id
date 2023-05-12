@@ -1,4 +1,4 @@
-import { Flex, Hide, Link } from '@chakra-ui/react';
+import { Hide, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 export default function NavLink() {

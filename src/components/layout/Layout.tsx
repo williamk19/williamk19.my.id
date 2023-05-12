@@ -15,7 +15,7 @@ export default function Layout({ children }: Props) {
         <Container
           maxW='container.md'
           px={[6, 6, 0]}>
-          <main>{children}</main>
+          {children}
           <Footer />
         </Container>
       </Box>

@@ -1,11 +1,11 @@
-import { Link, Flex, Container, Box, useColorMode } from '@chakra-ui/react';
+import { Link, Flex, Box, useColorMode } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import NavMenu from '../core/navbar/NavMenu';
 import NavThemeToggle from '../core/navbar/NavThemeToggle';
 import NavLink from '../core/navbar/NavLink';
 
 export default function Navbar() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <>
