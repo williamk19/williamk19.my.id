@@ -1,25 +1,24 @@
 import { ProjectAttr } from '@/types/project.type';
 import { Box, Flex, Link, Text, useColorMode } from '@chakra-ui/react';
-// import { Image } from '@chakra-ui/react';
 import Image from 'next/image';
-import { FC } from 'react';
 import { RiGithubFill } from 'react-icons/ri';
 import { ImLink } from 'react-icons/im';
 import { Key } from 'readline';
 
-type IndexProjectCardProps = {
+type ProjectsCardProps = {
   id: Key;
   attributes: ProjectAttr;
+  usingImage: boolean;
 };
 
-const IndexProjectCard: FC<IndexProjectCardProps> = ({ attributes }) => {
+const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
   const { colorMode } = useColorMode();
 
   return (
     <>
       <Box
-        border={`2px solid`}
-        borderColor={`${colorMode === 'light' ? 'black' : 'cyan.400'}`}
+        border={`3px solid`}
+        borderColor={`${colorMode === 'light' ? 'black' : 'cyan.800'}`}
         borderRadius={'lg'}
         boxShadow='md'
         overflow={'hidden'}
@@ -29,14 +28,16 @@ const IndexProjectCard: FC<IndexProjectCardProps> = ({ attributes }) => {
             transform: 'scale(1.045)',
           },
         }}>
-        <Image
-          src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
-          width={0}
-          height={0}
-          sizes='100vw'
-          style={{ width: '100%', height: 'auto' }}
-          alt={`${attributes.title.toLowerCase()}-thumb`}
-        />
+        {usingImage && (
+          <Image
+            src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
+            width={0}
+            height={0}
+            sizes='100vw'
+            style={{ width: '100%', height: 'auto' }}
+            alt={`${attributes.title.toLowerCase()}-thumb`}
+          />
+        )}
         <Box
           px={4}
           py={5}>
@@ -47,7 +48,7 @@ const IndexProjectCard: FC<IndexProjectCardProps> = ({ attributes }) => {
             {attributes.title}
           </Text>
           <Text
-            fontSize='md'
+            fontSize='sm'
             fontWeight='medium'
             mb={3}>
             {attributes.description}
@@ -93,4 +94,4 @@ const IndexProjectCard: FC<IndexProjectCardProps> = ({ attributes }) => {
   );
 };
 
-export default IndexProjectCard;
+export default ProjectsCard;

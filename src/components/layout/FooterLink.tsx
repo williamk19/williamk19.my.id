@@ -1,4 +1,4 @@
-import { Avatar, Flex, Link, Text } from '@chakra-ui/react';
+import { Flex, Link, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 export default function FooterLink() {
@@ -12,7 +12,7 @@ export default function FooterLink() {
         </Link>
         <Link
           as={NextLink}
-          href='/'>
+          href='/projects'>
           Projects
         </Link>
         <Link

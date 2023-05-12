@@ -1,20 +1,22 @@
-import { FC } from 'react';
 import { Project } from '@/types/project.type';
-import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
-import ProjectsCard from '@/components/core/ProjectsCard';
+import { Container, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
+import ProjectsCard from '../../core/ProjectsCard';
 
-type IndexProjectsProps = {
+type ProjectsLayoutProps = {
   projects: Project[];
 };
 
-const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
+const ProjectsLayout = ({ projects }: ProjectsLayoutProps) => {
   return (
     <>
       <Container
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'6'}>Projects</Heading>
+        <Heading mb={'2'}>Projects</Heading>
+        <Text
+          fontSize={'xl'}
+          mb={'6'}>{`Projects i've made so far`}</Text>
         <Grid
           templateColumns={[
             'repeat(1, 1fr)',
@@ -26,7 +28,7 @@ const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
             <GridItem key={project.id as number}>
               <ProjectsCard
                 {...project}
-                usingImage={false}
+                usingImage={true}
               />
             </GridItem>
           ))}
@@ -36,4 +38,4 @@ const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
   );
 };
 
-export default IndexProjects;
+export default ProjectsLayout;

@@ -16,7 +16,7 @@ export default function NavLink() {
           as={NextLink}
           fontSize='md'
           fontWeight='semibold'
-          href='/'>
+          href='/projects'>
           Projects
         </Link>
         <Link

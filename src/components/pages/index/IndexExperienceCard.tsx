@@ -29,8 +29,8 @@ const IndexExperienceCard: FC<IndexExperienceCardProps> = (props) => {
   return (
     <>
       <Box
-        border={`1px solid`}
-        borderColor={`${colorMode === 'light' ? 'black' : 'cyan.400'}`}
+        border={`3px solid`}
+        borderColor={`${colorMode === 'light' ? 'black' : 'cyan.800'}`}
         boxShadow='md'
         borderRadius={'lg'}
         w='100%'

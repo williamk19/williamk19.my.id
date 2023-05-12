@@ -32,7 +32,7 @@ export default function NavMenu() {
             </Link>
             <Link
               as={NextLink}
-              href='/'>
+              href='/projects'>
               <MenuItem icon={<TfiBriefcase />}>Projects</MenuItem>
             </Link>
             <Link
