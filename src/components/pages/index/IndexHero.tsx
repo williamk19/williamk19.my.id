@@ -1,9 +1,10 @@
-import { ChatIcon, SunIcon } from '@chakra-ui/icons';
+import { ChatIcon, DownloadIcon, SunIcon } from '@chakra-ui/icons';
 import { RiCommunityFill } from 'react-icons/ri';
 import {
   Avatar,
   AvatarBadge,
   Box,
+  Button,
   Container,
   Flex,
   Heading,
@@ -11,6 +12,7 @@ import {
   Text,
   Tooltip,
 } from '@chakra-ui/react';
+import Link from 'next/link';
 
 export default function IndexHero() {
   return (
@@ -18,7 +20,8 @@ export default function IndexHero() {
       <Container
         maxW='container.md'
         px={0}
-        pt={['14', '14', '32']} pb={['10', '10', '16']}>
+        pt={['14', '14', '32']}
+        pb={['10', '10', '16']}>
         <Flex
           gap='10'
           direction={['column-reverse', 'column-reverse', 'row']}>
@@ -36,13 +39,22 @@ export default function IndexHero() {
             </Text>
             <Text
               mt={'3'}
-              fontSize={'sm'}>
+              fontSize={['sm', 'sm', 'md']}>
               Fresh graduated software engineering student at Institut Teknologi
               Telkom Surabaya. Focusing on Web Development Technologies.
               Currently study about Frontend Engineering with React.js and
               Next.js. Want to learned more about other frontend technologies in
               the future and collaborating on open source projects.
             </Text>
+            <Button
+              width={'32'}
+              mt={'5'}
+              colorScheme='telegram'>
+              <Link href={`/assets/william-resume.pdf`}>
+                Resume
+                <DownloadIcon ml={'2'} />
+              </Link>
+            </Button>
           </Flex>
           <Flex pr='5'>
             <Avatar
