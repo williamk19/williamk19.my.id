@@ -3,9 +3,11 @@ import NextLink from 'next/link';
 import NavMenu from '../core/navbar/NavMenu';
 import NavThemeToggle from '../core/navbar/NavThemeToggle';
 import NavLink from '../core/navbar/NavLink';
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -47,7 +49,15 @@ export default function Navbar() {
               as={NextLink}
               fontSize='2xl'
               href='/'
-              fontWeight='bold'>
+              fontWeight='bold'
+              lineHeight={`1`}
+              borderBottom={pathname === `/` ? `2px solid` : `none`}
+              sx={{
+                '&:hover': {
+                  textDecoration: 'none',
+                  borderBottom: '2px solid',
+                },
+              }}>
               williamk19
             </Link>
             <NavLink />
