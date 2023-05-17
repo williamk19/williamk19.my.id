@@ -17,7 +17,7 @@ export const linkHoverStyles = (
       backgroundColor: colorMode === 'light' ? '#000' : '#fff',
       display: 'block',
       content: '""',
-      transition: '0.3s',
+      transition: 'width 0.3s, background-color 1s ease-out',
     },
 
     '&:hover': {
