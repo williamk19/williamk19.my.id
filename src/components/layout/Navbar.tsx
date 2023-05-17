@@ -4,6 +4,7 @@ import NavMenu from '../core/navbar/NavMenu';
 import NavThemeToggle from '../core/navbar/NavThemeToggle';
 import NavLink from '../core/navbar/NavLink';
 import { useRouter } from 'next/router';
+import { linkHoverStyles } from '@/styles/styles';
 
 export default function Navbar() {
   const { colorMode } = useColorMode();
@@ -50,14 +51,8 @@ export default function Navbar() {
               fontSize='2xl'
               href='/'
               fontWeight='bold'
-              lineHeight={`1`}
-              borderBottom={pathname === `/` ? `2px solid` : `none`}
-              sx={{
-                '&:hover': {
-                  textDecoration: 'none',
-                  borderBottom: '2px solid',
-                },
-              }}>
+              lineHeight={`1.5`}
+              sx={linkHoverStyles(pathname, `/`, colorMode)}>
               williamk19
             </Link>
             <NavLink />

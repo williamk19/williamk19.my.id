@@ -1,9 +1,11 @@
-import { Hide, Link } from '@chakra-ui/react';
+import { linkHoverStyles } from '@/styles/styles';
+import { Hide, Link, useColorMode } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
 export default function NavLink() {
   const { pathname } = useRouter();
+  const { colorMode } = useColorMode();
 
   return (
     <>
@@ -11,44 +13,26 @@ export default function NavLink() {
         <Link
           as={NextLink}
           fontSize='md'
-          borderBottom={pathname === `/blogs` ? `2px solid` : `none`}
           fontWeight='semibold'
           href='/'
-          sx={{
-            '&:hover': {
-              textDecoration: 'none',
-              borderBottom: '2px solid',
-            },
-          }}>
+          sx={linkHoverStyles(pathname, '/blogs', colorMode)}>
           Blogs
         </Link>
         <Link
           as={NextLink}
           m='6'
           fontSize='md'
-          borderBottom={pathname === `/projects` ? `2px solid` : `none`}
           fontWeight='semibold'
           href='/projects'
-          sx={{
-            '&:hover': {
-              textDecoration: 'none',
-              borderBottom: '2px solid',
-            },
-          }}>
+          sx={linkHoverStyles(pathname, '/projects', colorMode)}>
           Projects
         </Link>
         <Link
           as={NextLink}
           fontSize='md'
-          borderBottom={pathname === `/info` ? `2px solid` : `none`}
           fontWeight='semibold'
           href='/'
-          sx={{
-            '&:hover': {
-              textDecoration: 'none',
-              borderBottom: '2px solid',
-            },
-          }}>
+          sx={linkHoverStyles(pathname, '/info', colorMode)}>
           Info
         </Link>
       </Hide>

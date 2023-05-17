@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Project } from '@/types/project.type';
 import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
-import ProjectsCard from '@/components/core/ProjectsCard';
+import ProjectsCard from '@/components/core/projectsCard/ProjectsCard';
 
 type IndexProjectsProps = {
   projects: Project[];

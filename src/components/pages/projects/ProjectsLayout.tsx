@@ -1,6 +1,6 @@
 import { Project } from '@/types/project.type';
 import { Container, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
-import ProjectsCard from '../../core/ProjectsCard';
+import ProjectsCard from '../../core/projectsCard/ProjectsCard';
 
 type ProjectsLayoutProps = {
   projects: Project[];
