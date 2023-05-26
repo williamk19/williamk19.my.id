@@ -7,6 +7,8 @@ import { loadExperience } from '@/lib/loadExperience';
 import { loadProjectsIndex } from '@/lib/loadProjects';
 import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
+import MessageForm from '@/components/pages/message/MessageForm';
+import IndexMessage from '@/components/pages/index/IndexMessage';
 
 type HomeProps = {
   experience: Experience[];
@@ -20,6 +22,7 @@ const Home: FC<HomeProps> = ({ experience, projects }) => {
       <IndexHero />
       <IndexProjects projects={projects} />
       <IndexExperience experience={experience} />
+      <IndexMessage />
     </>
   );
 };

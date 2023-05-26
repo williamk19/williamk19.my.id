@@ -20,7 +20,6 @@ export default function NavLink() {
         </Link>
         <Link
           as={NextLink}
-          m='6'
           fontSize='md'
           fontWeight='semibold'
           href='/projects'
@@ -31,9 +30,9 @@ export default function NavLink() {
           as={NextLink}
           fontSize='md'
           fontWeight='semibold'
-          href='/'
-          sx={linkHoverStyles(pathname, '/info', colorMode)}>
-          Info
+          href='/message'
+          sx={linkHoverStyles(pathname, '/message', colorMode)}>
+          Message
         </Link>
       </Hide>
     </>

@@ -7,12 +7,11 @@ import {
   Show,
   Link,
   useColorMode,
-  textDecoration,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { TfiBriefcase } from 'react-icons/tfi';
 import { SlDocs } from 'react-icons/sl';
-import { BiInfoCircle } from 'react-icons/bi';
+import { BiMessageDetail } from 'react-icons/bi';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { linkMenuStyles } from '@/styles/styles';
@@ -55,11 +54,11 @@ export default function NavMenu() {
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
-              href='/'>
+              href='/message'>
               <MenuItem
-                sx={linkMenuStyles(pathname, '/info', colorMode)}
-                icon={<BiInfoCircle />}>
-                Info
+                sx={linkMenuStyles(pathname, '/message', colorMode)}
+                icon={<BiMessageDetail />}>
+                Message
               </MenuItem>
             </Link>
           </MenuList>
