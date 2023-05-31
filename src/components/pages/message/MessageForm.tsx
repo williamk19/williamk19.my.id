@@ -1,41 +1,21 @@
-import { Text, Button, Input, Textarea, Box } from '@chakra-ui/react';
+import { Text, Button, Input, Textarea, Box, Link } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 export default function MessageForm() {
+  const [message, setMessage] = useState('');
+  const [mailtoLink, setMailtoLink] = useState(
+    'mailto:williamkurniawan1144@gmail.com',
+  );
+
+  useEffect(() => {
+    if (message.length > 0) {
+      const newLink = `mailto:williamkurniawan1144@gmail.com?body=${message}`;
+      setMailtoLink(newLink);
+    }
+  }, [message]);
+
   return (
     <>
-      <Box>
-        <label>
-          <Text
-            mb={1}
-            fontSize={'small'}>
-            Name
-          </Text>
-        </label>
-        <Input
-          borderColor={'gray.500'}
-          type='email'
-          shadow='sm'
-          borderRadius={'md'}
-          size='sm'
-          placeholder='Johnny Doe'
-        />
-      </Box>
-      <Box>
-        <label>
-          <Text
-            mb={1}
-            fontSize={'small'}>
-            Email
-          </Text>
-        </label>
-        <Input
-          borderColor={'gray.500'}
-          shadow='sm'
-          size='sm'
-          borderRadius={'md'}
-          placeholder='johndoe@gmail.com'
-        />
-      </Box>
       <Box>
         <label>
           <Text
@@ -45,6 +25,7 @@ export default function MessageForm() {
           </Text>
         </label>
         <Textarea
+          onChange={(e) => setMessage(e.target.value)}
           borderColor={'gray.500'}
           shadow='sm'
           placeholder='Hi william 👋, ...'
@@ -54,13 +35,17 @@ export default function MessageForm() {
           resize='none'
         />
       </Box>
-      <Button
-        shadow='lg'
-        mt='4'
-        size={'sm'}
-        colorScheme='telegram'>
-        Send Message
-      </Button>
+      <Link
+        href={mailtoLink}
+        target='_blank'>
+        <Button
+          shadow='lg'
+          mt='4'
+          size={'sm'}
+          colorScheme='telegram'>
+          Send Message
+        </Button>
+      </Link>
     </>
   );
 }

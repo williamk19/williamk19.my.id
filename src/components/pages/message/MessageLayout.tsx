@@ -9,8 +9,13 @@ export default function MessageLayout() {
         gap={'2'}
         paddingX={['1', '2', '16']}
         paddingY='16'>
-        <Heading size={'lg'}>Message Me</Heading>
-        <Text>Drop me some message</Text>
+        <Flex
+          mb='2'
+          direction='column'
+          alignItems='center'>
+          <Heading mb='2' size={'lg'}>Message Me</Heading>
+          <Text>Drop some message to williamk19&apos;s email</Text>
+        </Flex>
         <MessageForm />
       </Flex>
     </>

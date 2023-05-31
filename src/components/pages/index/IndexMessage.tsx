@@ -14,8 +14,12 @@ export default function IndexMessage() {
             alignItems='center'
             direction='column'
             mb='4'>
-            <Heading size={'lg'}>Message Me</Heading>
-            <Text>Drop me some message</Text>
+            <Heading
+              mb='2'
+              size={'lg'}>
+              Message Me
+            </Heading>
+            <Text>Drop some message to williamk19&apos;s email</Text>
           </Flex>
         </Center>
         <MessageForm />
