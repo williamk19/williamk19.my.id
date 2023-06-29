@@ -17,19 +17,12 @@ export default function Footer() {
   return (
     <>
       <Box
-        h='1'
-        background={`${
-          colorMode === 'light'
-            ? 'gray.600'
-            : 'linear-gradient(270deg, #14dddf, #a365dd)'
-        }`}
-        animation={`line-anim 3s ease infinite alternate`}
-        backgroundSize={'400% 400%'}
+        h='2'
+        background={`${'linear-gradient(to right, #ef008f 0%, #6ec3f4 25%, #7038ff 50%, #c9c9c9 75%, #ef008f 100%) 200% 0/200% 100%;'}`}
+        animation={`line-anim 10s linear infinite`}
         sx={{
           '@keyframes line-anim': {
-            '0%': { backgroundPosition: '0% 50%' },
-            '50%': { backgroundPosition: '50% 50%' },
-            '100%': { backgroundPosition: '100% 50%' },
+            to: { backgroundPosition: '-200% 0%' },
           },
         }}
       />
