@@ -1,8 +1,10 @@
-const defaultSEOConfig = {
+import { DefaultSeoProps } from 'next-seo';
+
+const defaultSEOConfig: DefaultSeoProps = {
   title: "williamk19",
   titleTemplate: "%s | williamk19",
   defaultTitle: "williamk19",
-  description: "Frontend Web Engineer",
+  description: "William Kurniawan's personal website",
   canonical: "https://williamk19.com",
   openGraph: {
     url: "https://williamk19.com",

@@ -34,9 +34,9 @@ export default function NavMenu() {
             <Link
               _hover={{ textDecoration: 'none' }}
               as={NextLink}
-              href='/'>
+              href='/blog'>
               <MenuItem
-                sx={linkMenuStyles(pathname, '/blogs', colorMode)}
+                sx={linkMenuStyles(pathname, '/blog', colorMode)}
                 icon={<SlDocs />}>
                 Blogs
               </MenuItem>

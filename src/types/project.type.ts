@@ -1,4 +1,4 @@
-import { Key } from 'readline';
+import { Key } from 'react';
 
 export type Thumbnail = {
   data: {

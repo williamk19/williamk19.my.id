@@ -3,10 +3,8 @@ import { Box, Flex, Link, Text, useColorMode } from '@chakra-ui/react';
 import Image from 'next/image';
 import { RiGithubFill } from 'react-icons/ri';
 import { ImLink } from 'react-icons/im';
-import { Key } from 'readline';
 
 type ProjectsCardProps = {
-  id: Key;
   attributes: ProjectAttr;
   usingImage: boolean;
 };

@@ -14,8 +14,8 @@ export default function NavLink() {
           as={NextLink}
           fontSize='md'
           fontWeight='semibold'
-          href='/'
-          sx={linkHoverStyles(pathname, '/blogs', colorMode)}>
+          href='/blog'
+          sx={linkHoverStyles(pathname, '/blog', colorMode)}>
           Blogs
         </Link>
         <Link

@@ -27,7 +27,7 @@ const ProjectsLayout = ({ projects }: ProjectsLayoutProps) => {
           {projects?.map((project) => (
             <GridItem key={project.id as number}>
               <ProjectsCard
-                {...project}
+                attributes={project.attributes}
                 usingImage={true}
               />
             </GridItem>
