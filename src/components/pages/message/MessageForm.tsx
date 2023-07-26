@@ -19,23 +19,33 @@ export default function MessageForm() {
       <Box>
         <label>
           <Text
-            mb={1}
-            fontSize={'small'}>
+            mt={4}
+            mb={2}
+            fontSize={'md'}
+            fontWeight={'600'}>
             Message
           </Text>
         </label>
         <Textarea
           onChange={(e) => setMessage(e.target.value)}
           borderColor={'gray.500'}
-          shadow='sm'
+          shadow='md'
           placeholder='Hi william 👋, ...'
           size='sm'
           height={'32'}
           borderRadius={'md'}
           resize='none'
+          border={'2px'}
+          fontSize={'md'}
+          fontWeight={'500'}
+          _hover={{
+            borderColor: 'gray.500',
+          }}
         />
       </Box>
       <Link
+        height={'max-content'}
+        width={'max-content'}
         href={mailtoLink}
         target='_blank'>
         <Button

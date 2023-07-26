@@ -27,14 +27,20 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
           },
         }}>
         {usingImage && (
-          <Image
-            src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
-            width={0}
-            height={0}
-            sizes='100vw'
-            style={{ width: '100%', height: 'auto' }}
-            alt={`${attributes.title.toLowerCase()}-thumb`}
-          />
+          <Box
+          height={['40vw', '27vw', '170px']}
+          maxHeight={{base: 'unset', md: '170px'}}
+            width={'full'}
+            position={'relative'}>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
+              alt={`${attributes.title.toLowerCase()}-thumb`}
+              fill
+              style={{
+                objectFit: 'cover',
+              }}
+            />
+          </Box>
         )}
         <Box
           px={4}
@@ -52,7 +58,8 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
             {attributes.description}
           </Text>
           <Flex
-            gap={3}
+            wrap={'wrap'}
+            columnGap={3}
             mb={3}>
             {attributes.tags.map((tag, idx) => (
               <Text

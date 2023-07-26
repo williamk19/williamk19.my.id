@@ -1,16 +1,9 @@
 import { Blog } from '@/types/blogs.type';
-import {
-  Box,
-  Container,
-  Divider,
-  Flex,
-  Heading,
-  Image,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Container, Divider, Flex, Heading, Text } from '@chakra-ui/react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 
 type BlogLayoutProps = {
   blog: Blog;
@@ -38,19 +31,28 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
           gap={2}>
           <Heading size={'xl'}>{blog.attributes.title}</Heading>
           <Text>{getPublishedDate(blog.attributes.published_date)}</Text>
-          <Image
-            rounded={'md'}
-            shadow={'xl'}
+          <Box
+            overflow={'hidden'}
             my={6}
-            objectFit='cover'
+            rounded={'xl'}
+            shadow={'xl'}
             height={'48'}
             maxW={{ base: '100%' }}
-            src={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
-            alt={`${blog.attributes.slug}-img`}
-          />
+            position={'relative'}>
+            <Image
+              style={{
+                objectFit: 'cover',
+              }}
+              placeholder='blur'
+              blurDataURL={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
+              fill
+              src={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
+              alt={`${blog.attributes.slug}-img`}
+            />
+          </Box>
         </Flex>
         <Box
-          mt={['4', '10']}
+          mt={['4', '6']}
           px={['2', '4']}>
           <ReactMarkdown
             components={{
@@ -86,7 +88,10 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
           mt={8}
           px={['2', '4']}>
           <Heading size={'md'}>Related Tags</Heading>
-          <Flex wrap={'wrap'} mt={2} gap={3}>
+          <Flex
+            wrap={'wrap'}
+            mt={2}
+            gap={3}>
             {blog.attributes.tags.map((tag, idx) => (
               <Text key={idx}>#{tag}</Text>
             ))}

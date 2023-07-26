@@ -1,16 +1,17 @@
 import { Blog } from '@/types/blogs.type';
 import NextLink from 'next/link';
 import {
+  Box,
   Button,
   Card,
   CardBody,
   CardFooter,
   Heading,
-  Image,
   Stack,
   Text,
   useColorMode,
 } from '@chakra-ui/react';
+import Image from 'next/image';
 
 type BlogCardProps = {
   blog: Blog;
@@ -46,12 +47,20 @@ export default function BlogsCard({ blog }: BlogCardProps) {
         direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
         variant='outline'>
-        <Image
-          objectFit='cover'
-          maxW={{ base: '100%', sm: '200px' }}
-          src={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
-          alt='Caffe Latte'
-        />
+        <Box
+          height={{ base: '28vw', sm: 'unset' }}
+          width={{ base: '100%', sm: '100%' }}
+          maxWidth={{base: 'unset', sm: '200px'}}
+          position={'relative'}>
+          <Image
+            style={{
+              objectFit: 'cover',
+            }}
+            fill
+            src={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
+            alt={`${blog.attributes.slug}-heading-image`}
+          />
+        </Box>
         <Stack>
           <CardBody>
             <Heading size='md'>{blog.attributes.title}</Heading>

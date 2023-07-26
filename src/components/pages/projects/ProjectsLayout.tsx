@@ -1,5 +1,5 @@
 import { Project } from '@/types/project.type';
-import { Container, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
+import { Container, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
 import ProjectsCard from '../../core/projectsCard/ProjectsCard';
 
 type ProjectsLayoutProps = {
@@ -10,14 +10,24 @@ const ProjectsLayout = ({ projects }: ProjectsLayoutProps) => {
   return (
     <>
       <Container
+        centerContent
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'2'}>Projects</Heading>
-        <Text
-          fontSize={'xl'}
-          mb={'6'}>{`Projects i've made so far`}</Text>
+        <Flex
+          mb='2'
+          direction='column'
+          alignItems='center'>
+          <Heading
+            mb={'2'}
+            size={'lg'}>
+            Projects
+          </Heading>
+          <Text mb={'6'}>{`Projects i've made so far`}</Text>
+        </Flex>
         <Grid
+          maxW={['unset', '65%', 'unset']}
+          py={4}
           templateColumns={[
             'repeat(1, 1fr)',
             'repeat(1, 1fr)',
