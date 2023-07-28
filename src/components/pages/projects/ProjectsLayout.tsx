@@ -27,6 +27,7 @@ const ProjectsLayout = ({ projects }: ProjectsLayoutProps) => {
         </Flex>
         <Grid
           maxW={['unset', '65%', 'unset']}
+          minW={['unset', '345px', 'unset']}
           py={4}
           templateColumns={[
             'repeat(1, 1fr)',

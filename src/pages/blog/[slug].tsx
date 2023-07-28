@@ -17,17 +17,33 @@ export default function Page({ blog }: BlogPageProps) {
     <>
       <NextSeo
         title={blog.attributes.title}
-        description={blog.attributes.blog_text.split(' ').slice(0, 20).join(' ')}
+        description={blog.attributes.blog_text
+          .split(' ')
+          .slice(0, 20)
+          .join(' ')}
         canonical={`williamk19.com/blog/${blog.attributes.slug}`}
         openGraph={{
+          title: blog.attributes.title,
+          description: blog.attributes.blog_text
+            .split(' ')
+            .slice(0, 20)
+            .join(' '),
           type: 'article',
+          url: `williamk19.com/blog/${blog.attributes.slug}`,
           article: {
             publishedTime: blog.attributes.publishedAt.toString(),
             modifiedTime: blog.attributes.updatedAt.toString(),
             authors: ['https://williamk19.com'],
-            tags: ['Tag A', 'Tag B', 'Tag C'],
+            tags: [...blog.attributes.tags],
           },
-          url: `williamk19.com/blog/${blog.attributes.slug}`,
+          images: [
+            {
+              url: `${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`,
+              width: 1200,
+              height: 630,
+              alt: `${blog.attributes.slug}-picture`,
+            },
+          ],
         }}
       />
       <BlogLayout blog={blog} />

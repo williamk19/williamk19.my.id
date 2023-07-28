@@ -1,8 +1,16 @@
 import { ProjectAttr } from '@/types/project.type';
-import { Box, Flex, Link, Text, useColorMode } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Link,
+  Skeleton,
+  Text,
+  useColorMode,
+} from '@chakra-ui/react';
 import Image from 'next/image';
 import { RiGithubFill } from 'react-icons/ri';
 import { ImLink } from 'react-icons/im';
+import { Suspense } from 'react';
 
 type ProjectsCardProps = {
   attributes: ProjectAttr;
@@ -28,13 +36,16 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
         }}>
         {usingImage && (
           <Box
-          height={['40vw', '27vw', '170px']}
-          maxHeight={{base: 'unset', md: '170px'}}
+            height={['40vw', '26vw', '170px']}
+            minH={['unset', '152px', 'unset']}
+            maxHeight={{ base: 'unset', md: '170px' }}
             width={'full'}
             position={'relative'}>
             <Image
               src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
               alt={`${attributes.title.toLowerCase()}-thumb`}
+              sizes='100vw'
+              priority={true}
               fill
               style={{
                 objectFit: 'cover',

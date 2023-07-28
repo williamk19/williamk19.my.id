@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    domains: ['strapi.williamk19.com'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -74,7 +74,7 @@ export default function BlogsCard({ blog }: BlogCardProps) {
               as={NextLink}
               href={`blog/${blog.attributes.slug}`}
               variant='link'
-              colorScheme='messenger'>
+              colorScheme='telegram'>
               Read More
             </Button>
           </CardFooter>
