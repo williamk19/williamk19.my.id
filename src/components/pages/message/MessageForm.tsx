@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 export default function MessageForm() {
   const [message, setMessage] = useState('');
   const [mailtoLink, setMailtoLink] = useState(
-    'mailto:williamkurniawan1144@gmail.com',
+    'mailto:mail@williamk19.com',
   );
 
   useEffect(() => {
     if (message.length > 0) {
-      const newLink = `mailto:williamkurniawan1144@gmail.com?body=${message}`;
+      const newLink = `mailto:mail@williamk19.com?body=${message}`;
       setMailtoLink(newLink);
     }
   }, [message]);

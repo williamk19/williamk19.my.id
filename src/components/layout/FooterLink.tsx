@@ -7,7 +7,7 @@ export default function FooterLink() {
       <Flex direction='column'>
         <Link
           as={NextLink}
-          href='/'>
+          href='/blog'>
           Blogs
         </Link>
         <Link
@@ -17,8 +17,8 @@ export default function FooterLink() {
         </Link>
         <Link
           as={NextLink}
-          href='/'>
-          Info
+          href='/message'>
+          Message
         </Link>
       </Flex>
       <Flex direction='column'>
@@ -37,7 +37,7 @@ export default function FooterLink() {
         <Link
           target='_blank'
           as={NextLink}
-          href='mailto:williamkurniawan@gmail.com?subject=Hello%20William%2C%20%F0%9F%91%8B!'>
+          href='mailto:mail@williamk19.com?subject=Hello%20William%2C%20%F0%9F%91%8B!'>
           Email
         </Link>
       </Flex>
