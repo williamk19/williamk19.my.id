@@ -14,7 +14,7 @@ const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
         maxW='container.md'
         px={0}
         py={['10', '10', '16']}>
-        <Heading mb={'6'}>Projects</Heading>
+        <Heading mb={'6'}>Recent Projects</Heading>
         <Grid
           templateColumns={[
             'repeat(1, 1fr)',

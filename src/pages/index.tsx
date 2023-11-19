@@ -36,6 +36,7 @@ export async function getStaticProps() {
       experience,
       projects,
     },
+    revalidate: 360,
   };
 }
 

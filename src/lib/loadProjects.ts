@@ -1,6 +1,6 @@
 export async function loadProjectsIndex() {
   const projects = await fetch(
-    `${process.env.API_URL}/projects`,
+    `${process.env.API_URL}/projects?sort=createdAt:desc`,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
@@ -8,14 +8,14 @@ export async function loadProjectsIndex() {
     },
   );
 
-  const data = await projects.json();
-
-  return data;
+  const jsonData = await projects.json();
+  const slicedData = { ...jsonData, data: jsonData.data.slice(0, 2) };
+  return slicedData;
 }
 
 export async function loadProjects() {
   const projects = await fetch(
-    `${process.env.API_URL}/projects?populate[0]=thumbnail`,
+    `${process.env.API_URL}/projects?sort=createdAt:desc&populate[0]=thumbnail`,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
