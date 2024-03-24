@@ -38,5 +38,5 @@
     "remark-gfm": "^3.0.1",
     "typescript": "5.0.3"
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@1.22.1"
 }
