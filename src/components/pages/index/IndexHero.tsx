@@ -13,8 +13,11 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function IndexHero() {
+  const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
+
   return (
     <>
       <Container
@@ -62,10 +65,14 @@ export default function IndexHero() {
               size='2xl'
               src='/images/profile-pic.png '>
               <Tooltip
+                isOpen={isTooltipOpen}
                 label='Hello 👋!'
                 aria-label='A tooltip'
                 placement='left-end'>
                 <AvatarBadge
+                  onMouseEnter={() => setIsTooltipOpen(true)}
+                  onMouseLeave={() => setIsTooltipOpen(false)}
+                  onClick={() => setIsTooltipOpen(!isTooltipOpen)}
                   boxSize='0.7em'
                   border={'2px solid #fff'}
                   bg='gray.700'>
