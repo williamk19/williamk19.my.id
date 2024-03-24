@@ -7,7 +7,6 @@ import { loadExperience } from '@/lib/loadExperience';
 import { loadProjectsIndex } from '@/lib/loadProjects';
 import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
-import MessageForm from '@/components/pages/message/MessageForm';
 import IndexMessage from '@/components/pages/index/IndexMessage';
 
 type HomeProps = {
@@ -15,7 +14,7 @@ type HomeProps = {
   projects: Project[];
 };
 
-const Home: FC<HomeProps> = ({ experience, projects }) => {
+const Home = ({ experience, projects }: HomeProps) => {
   return (
     <>
       <NextSeo title='Home' />
