@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import defaultSEOConfig from '../../next-seo.config';
 import Layout from '../components/layout/Layout';
-import theme from '../themes/theme.js';
+import theme from '../themes/theme';
 import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
 
