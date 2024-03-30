@@ -1,14 +1,11 @@
-import { ChatIcon, DownloadIcon, SunIcon } from '@chakra-ui/icons';
-import { RiCommunityFill } from 'react-icons/ri';
+import { ChatIcon, DownloadIcon } from '@chakra-ui/icons';
 import {
   Avatar,
   AvatarBadge,
-  Box,
   Button,
   Container,
   Flex,
   Heading,
-  Spacer,
   Text,
   Tooltip,
 } from '@chakra-ui/react';
@@ -43,17 +40,20 @@ export default function IndexHero() {
             <Text
               mt={'3'}
               fontSize={['sm', 'sm', 'md']}>
-              Fresh graduated software engineering student at Institut Teknologi
-              Telkom Surabaya. Focusing on Web Development Technologies.
-              Currently study about Frontend Engineering with React.js and
-              Next.js. Want to learned more about other frontend technologies in
-              the future and collaborating on open source projects.
+              Recently graduated software engineering student at Institut
+              Teknologi Telkom Surabaya. Focusing on Web Development
+              Technologies. Currently study about Frontend Engineering with
+              React.js and Next.js. Want to learned more about other frontend
+              technologies in the future and collaborating on open source
+              projects.
             </Text>
             <Button
               width={'32'}
               mt={'5'}
               colorScheme='telegram'>
-              <Link href={`/assets/william-resume.pdf`}>
+              <Link
+                target='_blank'
+                href={`${process.env.NEXT_PUBLIC_FILE_URL}/uploads/Resume_William_Kurniawan_Eng_327381ce69.pdf`}>
                 Resume
                 <DownloadIcon ml={'2'} />
               </Link>
