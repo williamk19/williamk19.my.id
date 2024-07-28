@@ -1,11 +1,11 @@
 import BlogsLayout from '@/components/pages/blogs/BlogsLayout';
-import { loadBlogs } from '@/lib/loadBlogs';
+import pb from '@/lib/pocketbase';
 import { Blog } from '@/types/blogs.type';
 import { NextSeo } from 'next-seo';
 
 type BlogsProps = {
   blogs: Blog[];
-}
+};
 
 export default function Blogs({ blogs }: BlogsProps) {
   return (
@@ -17,7 +17,9 @@ export default function Blogs({ blogs }: BlogsProps) {
 }
 
 export async function getStaticProps() {
-  const { data: blogs } = await loadBlogs();
+  const blogs = await pb.collection<Blog>('blogs').getFullList({
+    sort: '-created',
+  });
 
   return {
     props: {

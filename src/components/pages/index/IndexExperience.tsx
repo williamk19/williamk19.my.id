@@ -1,22 +1,21 @@
 import { Container, Flex, Heading, Text } from '@chakra-ui/react';
 import IndexExperienceCard from './IndexExperienceCard';
 import { Experience } from '@/types/experience.type';
-import { FC } from 'react';
 
 type IndexExperienceProps = {
-  experience: Experience[];
+  experiences: Experience[];
 };
 
-const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
+const IndexExperience = ({ experiences }: IndexExperienceProps) => {
   const compareDate = (a: Experience, b: Experience) => {
-    if (a.attributes.date_end && b.attributes.date_end) {
-      if (a.attributes.date_end > b.attributes.date_end) {
+    if (a.ended_date && b.ended_date) {
+      if (a.ended_date > b.ended_date) {
         return 1;
       } else {
         return -1;
       }
-    } else if (!a.attributes.date_end || !b.attributes.date_end) {
-      if (a.attributes.date_start < b.attributes.date_start) {
+    } else if (!a.ended_date || !b.ended_date) {
+      if (a.started_date < b.started_date) {
         return 1;
       } else {
         return -1;
@@ -26,12 +25,12 @@ const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
     return 0;
   };
 
-  const workExperience = experience
-    .filter((exp: any) => exp.attributes.type === 'work')
+  const workExperience = experiences
+    .filter((exp: any) => exp.type === 'work')
     .sort(compareDate);
 
-  const orgExperience = experience
-    .filter((exp: any) => exp.attributes.type === 'organization')
+  const orgExperience = experiences
+    .filter((exp: any) => exp.type === 'organization')
     .sort(compareDate);
 
   return (
@@ -51,10 +50,11 @@ const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
           direction='column'
           px={[0, 0, 2]}
           gap='5'>
-          {workExperience.map((w: any, idx: number) => (
+          {workExperience.map((we: Experience) => (
             <IndexExperienceCard
-              key={idx}
-              {...w}
+              key={we.id}
+              id={we.id}
+              experience={we}
             />
           ))}
         </Flex>
@@ -69,10 +69,11 @@ const IndexExperience: FC<IndexExperienceProps> = ({ experience }) => {
           direction='column'
           px={[0, 0, 2]}
           gap='5'>
-          {orgExperience.map((w: any, idx: number) => (
+          {orgExperience.map((oe: Experience) => (
             <IndexExperienceCard
-              key={idx}
-              {...w}
+              key={oe.id}
+              id={oe.id}
+              experience={oe}
             />
           ))}
         </Flex>

@@ -2,40 +2,44 @@ import { NextSeo } from 'next-seo';
 import IndexHero from '@/components/pages/index/IndexHero';
 import IndexExperience from '@/components/pages/index/IndexExperience';
 import { Experience } from '../types/experience.type';
-import { FC } from 'react';
-import { loadExperience } from '@/lib/loadExperience';
-import { loadProjectsIndex } from '@/lib/loadProjects';
 import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
 import IndexMessage from '@/components/pages/index/IndexMessage';
+import pb from '@/lib/pocketbase';
 
 type HomeProps = {
-  experience: Experience[];
+  experiences: Experience[];
   projects: Project[];
 };
 
-const Home = ({ experience, projects }: HomeProps) => {
+const Home = ({ experiences, projects }: HomeProps) => {
   return (
     <>
       <NextSeo title='Home' />
       <IndexHero />
       <IndexProjects projects={projects} />
-      <IndexExperience experience={experience} />
+      <IndexExperience experiences={experiences} />
       <IndexMessage />
     </>
   );
 };
 
 export async function getStaticProps() {
-  const { data: experience } = await loadExperience();
-  const { data: projects } = await loadProjectsIndex();
+  const experiences = await pb
+    .collection<Experience>('experiences')
+    .getFullList({
+      sort: '-created',
+    });
+  const {items: projects} = await pb.collection<Project>('projects').getList(1, 2, {
+    sort: '-created',
+  });
 
   return {
     props: {
-      experience,
+      experiences,
       projects,
     },
-    revalidate: 360,
+    revalidate: 60,
   };
 }
 

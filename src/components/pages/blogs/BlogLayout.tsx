@@ -29,8 +29,8 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
         <Flex
           direction={'column'}
           gap={2}>
-          <Heading size={'xl'}>{blog.attributes.title}</Heading>
-          <Text>{getPublishedDate(blog.attributes.published_date)}</Text>
+          <Heading size={'xl'}>{blog.title}</Heading>
+          <Text>{getPublishedDate(blog.published)}</Text>
           <Box
             overflow={'hidden'}
             my={6}
@@ -44,10 +44,10 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
                 objectFit: 'cover',
               }}
               placeholder='blur'
-              blurDataURL={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
+              blurDataURL={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               fill
-              src={`${process.env.NEXT_PUBLIC_FILE_URL}${blog.attributes.blogs_media.data[0].attributes.url}`}
-              alt={`${blog.attributes.slug}-img`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
+              alt={`${blog.slug}-img`}
             />
           </Box>
         </Flex>
@@ -81,7 +81,7 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
             }}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}>
-            {blog.attributes.blog_text}
+            {blog.blog_text}
           </ReactMarkdown>
         </Box>
         <Box
@@ -92,7 +92,7 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
             wrap={'wrap'}
             mt={2}
             gap={3}>
-            {blog.attributes.tags.map((tag, idx) => (
+            {blog.tags.map((tag, idx) => (
               <Text key={idx}>#{tag}</Text>
             ))}
           </Flex>

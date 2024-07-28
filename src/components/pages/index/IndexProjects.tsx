@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Project } from '@/types/project.type';
 import { Container, Grid, GridItem, Heading } from '@chakra-ui/react';
 import ProjectsCard from '@/components/core/projectsCard/ProjectsCard';
@@ -7,7 +6,7 @@ type IndexProjectsProps = {
   projects: Project[];
 };
 
-const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
+const IndexProjects = ({ projects }: IndexProjectsProps) => {
   return (
     <>
       <Container
@@ -23,9 +22,9 @@ const IndexProjects: FC<IndexProjectsProps> = ({ projects }) => {
           ]}
           gap={'8'}>
           {projects?.map((project) => (
-            <GridItem key={project.id as number}>
+            <GridItem key={project.id}>
               <ProjectsCard
-                {...project}
+                project={project}
                 usingImage={false}
               />
             </GridItem>

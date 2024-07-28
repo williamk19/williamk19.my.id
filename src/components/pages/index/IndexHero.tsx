@@ -9,6 +9,7 @@ import {
   Text,
   Tooltip,
 } from '@chakra-ui/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -63,7 +64,7 @@ export default function IndexHero() {
             <Avatar
               boxShadow='2xl'
               size='2xl'
-              src='/images/profile-pic.png '>
+              src='/images/profile-pic.png'>
               <Tooltip
                 isOpen={isTooltipOpen}
                 label='Hello 👋!'
