@@ -1,19 +1,11 @@
-import { Key } from 'react';
+import { RecordModel } from 'pocketbase';
 
-export type ExperienceAttr = {
+export type Experience = RecordModel & {
   workplace: string;
-  job_desc: string;
-  location: string | null;
-  date_start: Date;
-  date_end: Date | null;
+  position: string;
+  location?: string | null;
+  started_date: Date;
+  ended_date?: Date | null;
   type: string;
   description: string[];
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-};
-
-export type Experience = {
-  id: Key;
-  attributes: ExperienceAttr;
 };

@@ -1,27 +1,10 @@
-import { Key } from 'react';
+import { RecordModel } from 'pocketbase';
 
-export type BlogMedia = {
-  data: {
-    id: Key;
-    attributes: {
-      url: string;
-    };
-  }[];
-};
-
-export type BlogAttr = {
+export type Blog = RecordModel & {
   title: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-  published_date: Date;
   slug: string;
   tags: string[];
-  blogs_media: BlogMedia;
+  published: Date;
   blog_text: string;
-};
-
-export type Blog = {
-  id: Key;
-  attributes: BlogAttr;
+  blog_file: string[];
 };

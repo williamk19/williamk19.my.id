@@ -1,5 +1,6 @@
 import ProjectsLayout from '@/components/pages/projects/ProjectsLayout';
 import { loadProjects } from '@/lib/loadProjects';
+import pb from '@/lib/pocketbase';
 import { Project } from '@/types/project.type';
 import { NextSeo } from 'next-seo';
 
@@ -19,7 +20,9 @@ export default function Projects({ projects }: ProjectsProps) {
 }
 
 export async function getStaticProps() {
-  const { data: projects } = await loadProjects();
+  const projects = await pb.collection<Project>('projects').getFullList({
+    sort: '-created',
+  });
 
   return {
     props: {

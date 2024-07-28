@@ -1,21 +1,20 @@
-import { ExperienceAttr } from '@/types/experience.type';
+import { Experience } from '@/types/experience.type';
 import { Box, Flex, Show, Text, useColorMode } from '@chakra-ui/react';
-import { FC, Key } from 'react';
+import { Key } from 'react';
 
 type IndexExperienceCardProps = {
   id: Key;
-  attributes: ExperienceAttr;
+  experience: Experience;
 };
 
-const IndexExperienceCard: FC<IndexExperienceCardProps> = (props) => {
+const IndexExperienceCard = ({ id, experience }: IndexExperienceCardProps) => {
   const { colorMode } = useColorMode();
-  const { attributes } = props;
 
-  const dateStart = new Date(attributes.date_start);
-  const dateEnd = attributes.date_end
-    ? new Date(attributes.date_end)
+  const dateStart = new Date(experience.started_date);
+  const dateEnd = experience.ended_date
+    ? new Date(experience.ended_date)
     : 'Present';
-  
+
   const monthYearStart = `${dateStart.toLocaleString('default', {
     month: 'short',
   })}, ${dateStart.getFullYear()}`;
@@ -50,9 +49,9 @@ const IndexExperienceCard: FC<IndexExperienceCardProps> = (props) => {
             <Text
               fontSize='xl'
               fontWeight='bold'>
-              {attributes.workplace}
+              {experience.workplace}
             </Text>
-            <Text>{attributes.job_desc}</Text>
+            <Text>{experience.position}</Text>
           </Box>
           <Flex
             mt={['2', '0']}
@@ -62,11 +61,11 @@ const IndexExperienceCard: FC<IndexExperienceCardProps> = (props) => {
             textAlign={['left', 'right']}
             fontSize={['xs', 'xs', 'sm']}>
             <Text>{`${monthYearStart} - ${monthYearEnd}`}</Text>
-            {attributes.location && <Show below='sm'>|</Show>}
-            <Text>{attributes?.location}</Text>
+            {experience.location && <Show below='sm'>|</Show>}
+            <Text>{experience?.location}</Text>
           </Flex>
         </Flex>
-        {attributes.description?.map((desc: string, idx: number) => (
+        {experience.description?.map((desc: string, idx: number) => (
           <Text
             key={idx}
             fontSize='sm'>

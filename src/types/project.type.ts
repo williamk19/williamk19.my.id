@@ -1,27 +1,11 @@
-import { Key } from 'react';
+import { RecordModel } from 'pocketbase';
 
-export type Thumbnail = {
-  data: {
-    id: Key;
-    attributes: {
-      url: string;
-    };
-  };
-};
-
-export type ProjectAttr = {
-  createdAt: Date;
-  description: string;
-  github_link?: string;
-  prod_link?: string;
-  publishedAt: Date;
-  tags: string[];
-  thumbnail: Thumbnail;
+export type Project = RecordModel & {
   title: string;
-  updatedAt: Date;
-};
-
-export type Project = {
-  id: Key;
-  attributes: ProjectAttr;
+  description: string;
+  thumbnail: string;
+  tags: string[];
+  github_link?: string;
+  url_link?: string;
+  blog_file: string[];
 };

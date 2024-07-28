@@ -1,23 +1,15 @@
-import { ProjectAttr } from '@/types/project.type';
-import {
-  Box,
-  Flex,
-  Link,
-  Skeleton,
-  Text,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Project } from '@/types/project.type';
+import { Box, Flex, Link, Text, useColorMode } from '@chakra-ui/react';
 import Image from 'next/image';
 import { RiGithubFill } from 'react-icons/ri';
 import { ImLink } from 'react-icons/im';
-import { Suspense } from 'react';
 
 type ProjectsCardProps = {
-  attributes: ProjectAttr;
+  project: Project;
   usingImage: boolean;
 };
 
-const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
+const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -42,8 +34,8 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
             width={'full'}
             position={'relative'}>
             <Image
-              src={`${process.env.NEXT_PUBLIC_FILE_URL}${attributes.thumbnail.data.attributes.url}`}
-              alt={`${attributes.title.toLowerCase()}-thumb`}
+              src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`}
+              alt={`${project.title.toLowerCase()}-thumb`}
               sizes='100vw'
               priority={true}
               fill
@@ -60,19 +52,19 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
             fontSize='xl'
             fontWeight='bold'
             mb={2}>
-            {attributes.title}
+            {project.title}
           </Text>
           <Text
             fontSize='sm'
             fontWeight='medium'
             mb={3}>
-            {attributes.description}
+            {project.description}
           </Text>
           <Flex
             wrap={'wrap'}
             columnGap={3}
             mb={3}>
-            {attributes.tags.map((tag, idx) => (
+            {project.tags.map((tag, idx) => (
               <Text
                 key={idx}
                 fontSize='sm'
@@ -82,23 +74,23 @@ const ProjectsCard = ({ attributes, usingImage = true }: ProjectsCardProps) => {
             ))}
           </Flex>
           <Flex gap={3}>
-            {attributes.github_link && (
+            {project.github_link && (
               <Link
                 display={'flex'}
                 alignItems={'center'}
                 justifyContent={'center'}
-                href={attributes.github_link}
+                href={project.github_link}
                 target='_blank'>
                 <RiGithubFill size={'24px'} />
               </Link>
             )}
-            {attributes.prod_link && (
+            {project.url_link && (
               <Link
                 height={'24px'}
                 display={'flex'}
                 alignItems={'center'}
                 justifyContent={'center'}
-                href={attributes.prod_link}
+                href={project.url_link}
                 target='_blank'>
                 <ImLink size={'18px'} />
               </Link>
