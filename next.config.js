@@ -5,10 +5,6 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'strapi.williamk19.my.id',
-      },
-      {
-        protocol: 'https',
         hostname: 'pb.williamk19.my.id',
       },
       {
