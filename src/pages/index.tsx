@@ -8,17 +8,19 @@ import IndexMessage from '@/components/pages/index/IndexMessage';
 import pb from '@/lib/pocketbase';
 import { GetServerSidePropsContext } from 'next';
 import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
+import { Resume } from '@/types/resume.type';
 
 type HomeProps = {
   experiences: Experience[];
   projects: Project[];
+  resume: Resume;
 };
 
-const Home = ({ experiences, projects }: HomeProps) => {
+const Home = ({ experiences, projects, resume }: HomeProps) => {
   return (
     <>
       <NextSeo title='Home' />
-      <IndexHero />
+      <IndexHero resume={resume} />
       <IndexProjects projects={projects} />
       <IndexExperience experiences={experiences} />
       <IndexMessage />
@@ -34,17 +36,23 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     .getFullList({
       sort: '-created',
     });
+
   const { items: projects } = await pb
     .collection<Project>('projects')
     .getList(1, 2, {
       sort: '-created',
     });
 
+  const resume = await pb.collection('resumes').getFirstListItem('', {
+    sort: '-created',
+  });
+
   return {
     props: {
       ...chakraProps.props,
       experiences,
       projects,
+      resume,
     },
   };
 }

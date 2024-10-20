@@ -1,3 +1,4 @@
+import { Resume } from '@/types/resume.type';
 import { ChatIcon, DownloadIcon } from '@chakra-ui/icons';
 import {
   Avatar,
@@ -12,7 +13,7 @@ import {
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function IndexHero() {
+export default function IndexHero({ resume }: { resume: Resume }) {
   const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(false);
 
   return (
@@ -53,7 +54,7 @@ export default function IndexHero() {
               colorScheme='blue'>
               <Link
                 target='_blank'
-                href={`${process.env.NEXT_PUBLIC_FILE_URL}/uploads/Resume_William_Kurniawan_Eng_327381ce69.pdf`}>
+                href={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${resume.collectionId}/${resume.id}/${resume.document}`}>
                 Resume
                 <DownloadIcon ml={'2'} />
               </Link>
