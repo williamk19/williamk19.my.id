@@ -34,7 +34,7 @@ const ProjectsCard = ({ project, usingImage = true }: ProjectsCardProps) => {
             width={'full'}
             position={'relative'}>
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`}
+              src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${project.collectionId}/${project.id}/${project.thumbnail}`}
               alt={`${project.title.toLowerCase()}-thumb`}
               sizes='100vw'
               priority={true}

@@ -32,7 +32,7 @@ export default function Custom404() {
             as={NextLink}
             href={'/'}
             textDecor={'underline'}
-            colorScheme='telegram'>
+            colorScheme='blue'>
             Go To Home
           </Button>
         </Flex>

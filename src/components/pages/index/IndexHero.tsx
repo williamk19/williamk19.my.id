@@ -9,7 +9,6 @@ import {
   Text,
   Tooltip,
 } from '@chakra-ui/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -51,7 +50,7 @@ export default function IndexHero() {
             <Button
               width={'32'}
               mt={'5'}
-              colorScheme='telegram'>
+              colorScheme='blue'>
               <Link
                 target='_blank'
                 href={`${process.env.NEXT_PUBLIC_FILE_URL}/uploads/Resume_William_Kurniawan_Eng_327381ce69.pdf`}>

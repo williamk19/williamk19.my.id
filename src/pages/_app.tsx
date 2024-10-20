@@ -1,14 +1,13 @@
-import '@/styles/globals.css';
 import '@fontsource/figtree';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
 import { DefaultSeo } from 'next-seo';
 import defaultSEOConfig from '../../next-seo.config';
 import Layout from '../components/layout/Layout';
-import theme from '../themes/theme';
 import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
+import { Chakra } from '@/lib/chakra/Chakra';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -39,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
           rel='manifest'
           href='/site.webmanifest'></link>
       </Head>
-      <ChakraProvider theme={theme}>
+      <Chakra cookies={pageProps.cookies}>
         <DefaultSeo {...defaultSEOConfig} />
         <Layout>
           <NextNProgress
@@ -49,8 +48,10 @@ export default function App({ Component, pageProps }: AppProps) {
           />
           <Component {...pageProps} />
         </Layout>
-      </ChakraProvider>
+      </Chakra>
       <Analytics />
     </>
   );
 }
+
+export { getServerSideProps } from '@/lib/chakra/Chakra';

@@ -3,13 +3,11 @@ import { useEffect, useState } from 'react';
 
 export default function MessageForm() {
   const [message, setMessage] = useState('');
-  const [mailtoLink, setMailtoLink] = useState(
-    'mailto:mail@williamk19.com',
-  );
+  const [mailtoLink, setMailtoLink] = useState('mailto:mail@williamk19.my.id');
 
   useEffect(() => {
     if (message.length > 0) {
-      const newLink = `mailto:mail@williamk19.com?body=${message}`;
+      const newLink = `mailto:mail@williamk19.my.id?body=${message}`;
       setMailtoLink(newLink);
     }
   }, [message]);
@@ -52,7 +50,7 @@ export default function MessageForm() {
           shadow='lg'
           mt='4'
           size={'sm'}
-          colorScheme='telegram'>
+          colorScheme='blue'>
           Send Message
         </Button>
       </Link>

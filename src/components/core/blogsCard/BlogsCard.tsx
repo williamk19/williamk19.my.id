@@ -64,7 +64,7 @@ export default function BlogsCard({ blog }: BlogCardProps) {
               objectFit: 'cover',
             }}
             fill
-            src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
+            src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
             alt={`${blog.slug}-heading-image`}
           />
         </Box>
@@ -79,7 +79,7 @@ export default function BlogsCard({ blog }: BlogCardProps) {
               as={NextLink}
               href={`blog/${blog.slug}`}
               variant='link'
-              colorScheme='telegram'>
+              colorScheme='blue'>
               Read More
             </Button>
           </CardFooter>

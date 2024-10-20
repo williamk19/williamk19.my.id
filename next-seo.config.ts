@@ -5,9 +5,9 @@ const defaultSEOConfig: DefaultSeoProps = {
   titleTemplate: "%s | williamk19",
   defaultTitle: "williamk19",
   description: "William Kurniawan's personal website",
-  canonical: "https://williamk19.com",
+  canonical: "https://williamk19.my.id",
   openGraph: {
-    url: "https://williamk19.com",
+    url: "https://williamk19.my.id",
     title: "williamk19",
     description: "Frontend Web Engineer",
     siteName: "williamk19 personal site",

@@ -1,6 +1,6 @@
 import { Blog } from '@/types/blogs.type';
 import { Box, Container, Divider, Flex, Heading, Text } from '@chakra-ui/react';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import Image from 'next/image';
@@ -44,9 +44,9 @@ export default function BlogLayout({ blog }: BlogLayoutProps) {
                 objectFit: 'cover',
               }}
               placeholder='blur'
-              blurDataURL={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
+              blurDataURL={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               fill
-              src={`${process.env.NEXT_PUBLIC_API_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
+              src={`${process.env.NEXT_PUBLIC_PB_URL}/api/files/${blog.collectionId}/${blog.id}/${blog.blog_file[0]}`}
               alt={`${blog.slug}-img`}
             />
           </Box>

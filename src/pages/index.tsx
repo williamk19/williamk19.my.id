@@ -6,6 +6,8 @@ import { Project } from '@/types/project.type';
 import IndexProjects from '@/components/pages/index/IndexProjects';
 import IndexMessage from '@/components/pages/index/IndexMessage';
 import pb from '@/lib/pocketbase';
+import { GetServerSidePropsContext } from 'next';
+import { getServerSideProps as chakraGetServerSideProps } from '@/lib/chakra/Chakra';
 
 type HomeProps = {
   experiences: Experience[];
@@ -24,22 +26,26 @@ const Home = ({ experiences, projects }: HomeProps) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const chakraProps = await chakraGetServerSideProps(context);
+
   const experiences = await pb
     .collection<Experience>('experiences')
     .getFullList({
       sort: '-created',
     });
-  const {items: projects} = await pb.collection<Project>('projects').getList(1, 2, {
-    sort: '-created',
-  });
+  const { items: projects } = await pb
+    .collection<Project>('projects')
+    .getList(1, 2, {
+      sort: '-created',
+    });
 
   return {
     props: {
+      ...chakraProps.props,
       experiences,
       projects,
     },
-    revalidate: 60,
   };
 }
 
