@@ -8,6 +8,7 @@ import Layout from '../components/layout/Layout';
 import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
 import { Chakra } from '@/lib/chakra/Chakra';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Layout>
       </Chakra>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
